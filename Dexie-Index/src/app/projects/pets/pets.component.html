@@ -1,0 +1,42 @@
+<!-- Division for GeeksForGeeks heading -->
+<div class="container-fluid">
+    <div class="row bg-danger justify-content-center align-items-center" style="height: 80px;">
+        <div class="col-3"></div>
+        <div class="col-6 text-light h2">Pet Management</div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center align-items-center main-row">
+            <div class="col shadow main-col bg-white">
+                <div class="row justify-content-between text-white p-2">
+                    <div class="form-group flex-fill mb-2">
+                        <form [formGroup]="petsForm">
+                            <label for="breed" class="mr-2">Breed:</label>
+                            <input type="text" id="breed" formControlName="breed" class="form-control" placeholder="Enter breed">
+                            <label for="color" class="mr-2">Color:</label>
+                            <input type="text" id="color" formControlName="color" class="form-control" placeholder="Enter color">
+                        </form>
+                    </div>
+                    <button type="button" (click)="addPet()" class="btn btn-primary mb-2 ml-2">Add Pet</button>
+                    <button type="button" (click)="resetPetData()" class="btn btn-primary mb-2 ml-2">Reset Pet Data</button>
+                </div>
+                <div class="row" id="todo-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <ng-container *ngFor="let pet of petsArray">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 p-2">
+                    <div class="input-group">
+                        <p class="fs-1 flex">{{pet['color'] + ' ' + pet['breed']}}</p>
+                        <div>
+                            <button class="btn btn-outline-secondary bg-danger text-white" type="button" (click)="deletePet(pet['id'])">X</button>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>
