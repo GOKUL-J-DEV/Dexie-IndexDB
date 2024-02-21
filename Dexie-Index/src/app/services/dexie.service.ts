@@ -19,9 +19,9 @@ export class DexieService extends Dexie {
    
    private initDatabase() {
     // Define your database schema
-    this.dx = new Dexie('pets-db');
+    this.dx = new Dexie('dexie-db');
     this.dx.version(1).stores({
-      pets : '++id,color,breed'
+      employee : '++id,name,age,joiningDate'
     })
 
     this.dx.open()
@@ -44,6 +44,28 @@ export class DexieService extends Dexie {
 
   public async resetPetData(){
     await this.dx.table('pets').clear();
+  }
+
+  public async getEmployeeData(){
+    const employeeData = await this.dx.table('employee').toArray();
+    return employeeData
+  }
+
+  public async storeEmployeeData(empData:any){
+    await this.dx.table('employee').add(empData);
+  }
+
+  public async deleteEmployeeData(empId:string){
+    await this.dx.table('employee').delete(empId)
+  }
+
+  public async resetEmployeeData(){
+    await this.dx.table('employee').clear();
+  }
+
+  public async getEmployeeByName(empName:string){
+   const empData =  await this.dx.table('employee').where('name').equalsIgnoreCase(empName).toArray();
+   return empData
   }
 
   }

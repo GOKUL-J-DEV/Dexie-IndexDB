@@ -1,1 +1,49 @@
-<p>demo-methods works!</p>
+<!-- Division for GeeksForGeeks heading -->
+<div class="container-fluid">
+    <div class="row bg-danger justify-content-center align-items-center" style="height: 80px;">
+        <div class="col-3"></div>
+        <div class="col-6 text-light h2">Pet Management</div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center align-items-center main-row">
+            <div class="col shadow main-col bg-white">
+                <div class="row justify-content-between text-white p-2">
+                    <div class="form-group flex-fill mb-2">
+                        <form [formGroup]="empForm">
+                            <label for="name" class="mr-2">Name:</label>
+                            <input type="text" id="name" formControlName="name" class="form-control" placeholder="Enter name">
+                            <label for="role" class="mr-2">Role:</label>
+                            <input type="text" id="role" formControlName="role" class="form-control" placeholder="Enter role">
+                            <label for="age" class="mr-2">Age:</label>
+                            <input type="text" id="age" formControlName="age" class="form-control" placeholder="Enter age">
+                            <label for="date" class="mr-2">Joining Date:</label>
+                            <input type="text" id="date" formControlName="date" class="form-control" placeholder="Enter date">
+                        </form>
+                    </div>
+                    <button type="button" (click)="addEmployee()" class="btn btn-primary mb-2 ml-2">Add</button>
+                    <button type="button" (click)="resetEmpData()" class="btn btn-primary mb-2 ml-2">Reset</button>
+                </div>
+                <div class="row" id="todo-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <ng-container *ngFor="let emp of empData">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 p-2">
+                    <div class="input-group">
+                        <p class="fs-1 flex">{{emp['name'] + ' ' + emp['role']}}</p>
+                        <div>
+                            <button class="btn btn-outline-secondary bg-danger text-white" type="button" (click)="deleteEmployee(emp['id'])">X</button>
+                        </div>
+                        <div>
+                            <a [routerLink]="'/methods/' + emp['name']" class="btn btn-outline-secondary bg-success text-white" type="button">Edit</a>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

@@ -5,14 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PetsComponent } from './projects/pets/pets.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DemoMethodsComponent } from './learnin/demo-methods/demo-methods.component';
+import { DemoMethodsComponent } from './learning/demo-methods/demo-methods.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PetsComponent,
-    DemoMethodsComponent
-  ],
+    DemoMethodsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
