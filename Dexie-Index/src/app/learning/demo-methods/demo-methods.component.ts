@@ -11,6 +11,7 @@ import { DexieService } from 'src/app/services/dexie.service';
 export class DemoMethodsComponent {
   public empForm!: FormGroup;
   public empData: [] = [];
+  public canEdit!:boolean;
 
   @Input() empName = '';
 
@@ -25,6 +26,7 @@ export class DemoMethodsComponent {
       date: ['']
     })
     if(this.empName){
+      this.canEdit = true;
       this.getEmployeeById(this.empName)
     }else{
       this.retrieveEmpData();
@@ -66,6 +68,12 @@ export class DemoMethodsComponent {
       this.empForm.patchValue({
         ...data[0]
       })
+    })
+  }
+
+  public editEmployee() {
+    const recordData = this.empForm.value
+    this.dx.editEmployeeData(this.empName,{ ...recordData }).then((data) => {
     })
   }
 }

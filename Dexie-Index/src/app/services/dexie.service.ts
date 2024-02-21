@@ -68,5 +68,9 @@ export class DexieService extends Dexie {
    return empData
   }
 
+  public async editEmployeeData(getEmployeeById:string,data:any){
+    await this.dx.table('employee').where("name").equals(getEmployeeById).modify(data);
+
   }
   
+}
